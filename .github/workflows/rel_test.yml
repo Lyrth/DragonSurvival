@@ -43,6 +43,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           name: MC ${{ steps.mc_version.outputs.value }} build, updated at ${{ github.event.repository.updated_at}}
+          tag_name: experimental
           body: |
             ⚠️ This is an automatically generated file with untested content. Be extremely careful not to use this in your main world without creating backups! ⚠️
           files: build/libs/*${{ steps.mc_version.outputs.value }}-*.jar
