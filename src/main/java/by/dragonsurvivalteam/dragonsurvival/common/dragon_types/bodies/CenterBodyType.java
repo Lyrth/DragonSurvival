@@ -8,17 +8,21 @@ import net.minecraft.nbt.CompoundTag;
 
 public class CenterBodyType extends AbstractDragonBody {
 
-	@ConfigRange(min = -10.0, max = 100)
-	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerJumpBonus", comment = "The jump bonus given to Center-type dragons")
+	@ConfigRange(min = -1.0, max = 100)
+	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerJumpBonus", comment = "The jump bonus given to Center-type dragons. It's a very sensitive parameter.")
 	public static Double centerJumpBonus = 0.0;
 
 	@ConfigRange(min = -10.0, max = 100)
 	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerStepBonus", comment = "The step bonus given to Center-type dragons")
-	public static Double centerStepBonus = 0.0;
+	public static Double centerStepBonus = 1.0;
 
 	@ConfigRange(min = -10.0, max = 100)
 	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerDamageBonus", comment = "The damage bonus given to Center-type dragons")
 	public static Double centerDamageBonus = 0.0;
+
+	@ConfigRange(min = 0.0, max = 100)
+	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerDamageMult", comment = "The damage multiplier given to Center-type dragons")
+	public static Double centerDamageMult = 1.0;
 
 	@ConfigRange(min = -10.0, max = 100)
 	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerArmorBonus", comment = "The armor bonus given to Center-type dragons")
@@ -36,6 +40,10 @@ public class CenterBodyType extends AbstractDragonBody {
 	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerHealthBonus", comment = "The health bonus given to Center-type dragons")
 	public static Double centerHealthBonus = 0.0;
 
+	@ConfigRange(min = 0.0, max = 100)
+	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerHealthMult", comment = "The health multiplier given to Center-type dragons")
+	public static Double centerHealthMult = 1.0;
+
 	@ConfigRange(min = -10.0, max = 100)
 	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerKnockbackBonus", comment = "The knockback bonus given to Center-type dragons")
 	public static Double centerKnockbackBonus = 0.0;
@@ -45,27 +53,19 @@ public class CenterBodyType extends AbstractDragonBody {
 	public static Double centerRunMult = 1.0;
 
 	@ConfigRange(min = 0.0, max = 100)
-	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerDamageMult", comment = "The damage multiplier given to Center-type dragons")
-	public static Double centerDamageMult = 1.0;
-
-	@ConfigRange(min = 0.0, max = 100)
-	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerExpMult", comment = "The exp multiplier given to Center-type dragons")
+	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerExpMult", comment = "The exp multiplier given to Center-type dragons. Can cause dupes with some mods. Increase carefully.")
 	public static Double centerExpMult = 1.0;
 
-	@ConfigRange(min = 0.0, max = 10)
-	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerFlightMult", comment = "The flight multiplier given to Center-type dragons")
-	public static Double centerFlightMult = 1.0;
+	@ConfigRange(min = 1.0, max = 10)
+	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerFlightMult", comment = "The flight multiplier given to Center-type dragons. It is not recommended to do less than 1.0 (otherwise your dragon will fall instead of flying upwards)")
+	public static Double centerFlightMult = 1.2;
 
 	@ConfigRange(min = 0.0, max = 100)
-	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerFlightStaminaMult", comment = "The flightStamina multiplier given to Center-type dragons")
+	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerFlightStaminaMult", comment = "The flightStamina (food waste rate) multiplier given to Center-type dragons. The higher the number, the faster hunger is consumed. It's a very sensitive setting.")
 	public static Double centerFlightStaminaMult = 1.0;
 
 	@ConfigRange(min = 0.0, max = 100)
-	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerHealthMult", comment = "The health multiplier given to Center-type dragons")
-	public static Double centerHealthMult = 1.0;
-
-	@ConfigRange(min = 0.0, max = 100)
-	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerGravityMult", comment = "The gravity multiplier given to Center-type dragons")
+	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerGravityMult", comment = "The gravity multiplier given to Center-type dragons. The greater the gravity, the faster the dragon will fall during flight and drown faster.")
 	public static Double centerGravityMult = 1.0;
 
 	@Override

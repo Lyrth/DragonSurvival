@@ -32,7 +32,7 @@ public class DragonAltarGUI extends Screen{
 	public static final ResourceLocation CONFIRM_BUTTON = new ResourceLocation(DragonSurvivalMod.MODID, "textures/gui/confirm_button.png");
 	public static final ResourceLocation CANCEL_BUTTON = new ResourceLocation(DragonSurvivalMod.MODID, "textures/gui/cancel_button.png");
 	private static final ResourceLocation backgroundTexture = new ResourceLocation("textures/block/black_concrete.png");
-	private final String[] animations = {"sit_head_locked", "idle_head_locked", "fly_head_locked", "swim_fast", "run_head_locked", "fly_spin", "dig_head_locked", "sit_on_magic_source", "resting_left_head_locked", "vibing_sitting", "shy_sitting", "vibing_sitting", "flapping_wings_standing_biped", "rocking_on_back" };
+	private final String[] animations = {"sit_head_locked", "idle_head_locked", "fly_head_locked", "swim_fast_head_locked", "run_head_locked", "dig_head_locked", "resting_left_head_locked", "vibing_sitting", "shy_sitting", "vibing_sitting", "rocking_on_back" };
 	public DragonStateHandler handler1 = new DragonStateHandler();
 	public DragonStateHandler handler2 = new DragonStateHandler();
 	private int guiLeft;

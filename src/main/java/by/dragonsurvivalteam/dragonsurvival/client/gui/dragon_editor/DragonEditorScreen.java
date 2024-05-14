@@ -84,7 +84,7 @@ public class DragonEditorScreen extends Screen implements TooltipRender{
 	                                     "sit_head_locked",
 	                                     "idle_head_locked",
 	                                     "fly_head_locked",
-	                                     "swim_fast",
+	                                     "swim_fast_locked",
 	                                     "run_head_locked",
 	                                     "spinning_on_back"};
 	@ConfigRange( min = 1, max = 1000 )
@@ -492,44 +492,49 @@ public class DragonEditorScreen extends Screen implements TooltipRender{
 			addRenderableWidget(new DragonEditorSlotButton(width / 2 + 200 + 15, guiTop + (num - 1) * 12 + 5 + 30, num, this));
 		}
 
-		addRenderableWidget(new ForgeSlider(width / 2 - 100 - 100, height - 25, 100, 20, Component.translatable("ds.gui.dragon_editor.size"), Component.empty().append("%"), ServerConfig.minSizeVari, ServerConfig.maxSizeVari, Math.round((preset.sizeMul - 1.0) * 100), true){
-			@Override
-			protected void applyValue(){
-				super.applyValue();
-				double val = 1.0 + getValueInt() / 100.0;
-				if(preset.sizeMul != val){
-					preset.sizeMul = val;
-					dragonRender.zoom = (float)(level.size * preset.sizeMul);
-				}
+// The old part of the gui that allowed you to change the size of the dragon without changing the hitbox
+//		addRenderableWidget(new ForgeSlider(width / 2 - 100 - 100, height - 25, 100, 20, Component.translatable("ds.gui.dragon_editor.size"), Component.empty().append("%"), ServerConfig.minSizeVari, ServerConfig.maxSizeVari, Math.round((preset.sizeMul - 1.0) * 100), true){
+//			@Override
+//			protected void applyValue(){
+//				super.applyValue();
+//				double val = 1.0 + getValueInt() / 100.0;
+//				if(preset.sizeMul != val){
+//					preset.sizeMul = val;
+//					dragonRender.zoom = (float)(level.size * preset.sizeMul);
+//				}
+//
+//				double val1 = Math.round((preset.sizeMul - 1.0) * 100);
+//
+//				if(val1 > 0){
+//					setMessage(Component.translatable("ds.gui.dragon_editor.size").append("+").append(val1 + "%"));
+//				}else{
+//					setMessage(Component.translatable("ds.gui.dragon_editor.size").append(val1 + "%"));
+//				}
+//			}
+//
+//			@Override
+//			public void render(PoseStack pMatrixStack, int pMouseX, int pMouseY, float pPartialTicks){
+//				super.render(pMatrixStack, pMouseX, pMouseY, pPartialTicks);
+//			}
+//
+//			@Override
+//			public void renderToolTip(PoseStack pPoseStack, int pMouseX, int pMouseY){
+//				TooltipRendering.drawHoveringText(pPoseStack, Component.translatable("ds.gui.dragon_editor.size_info"), pMouseX, pMouseY);
+//			}
+//		});
 
-				double val1 = Math.round((preset.sizeMul - 1.0) * 100);
-
-				if(val1 > 0){
-					setMessage(Component.translatable("ds.gui.dragon_editor.size").append("+").append(val1 + "%"));
-				}else{
-					setMessage(Component.translatable("ds.gui.dragon_editor.size").append(val1 + "%"));
-				}
-			}
-
-			@Override
-			public void render(PoseStack pMatrixStack, int pMouseX, int pMouseY, float pPartialTicks){
-				super.render(pMatrixStack, pMouseX, pMouseY, pPartialTicks);
-			}
-
-			@Override
-			public void renderToolTip(PoseStack pPoseStack, int pMouseX, int pMouseY){
-				TooltipRendering.drawHoveringText(pPoseStack, Component.translatable("ds.gui.dragon_editor.size_info"), pMouseX, pMouseY);
-			}
-		});
-
-		addRenderableWidget(new ExtendedCheckbox(width / 2 + 100, height - 19, 120, 17, 17, Component.translatable("ds.gui.dragon_editor.wings"), preset.skinAges.get(level).get().wings, p -> preset.skinAges.get(level).get().wings = p.selected()){
+		addRenderableWidget(new ExtendedCheckbox(width / 2 - 220, height - 25, 120, 17, 17, Component.translatable("ds.gui.dragon_editor.wings"), preset.skinAges.get(level).get().wings, p -> preset.skinAges.get(level).get().wings = p.selected()){
 			@Override
 			public void renderButton(PoseStack pMatrixStack, int pMouseX, int pMouseY, float pPartialTicks){
 				selected = preset.skinAges.get(level).get().wings;
 				super.renderButton(pMatrixStack, pMouseX, pMouseY, pPartialTicks);
 			}
+			@Override
+			public void renderToolTip(PoseStack p_230443_1_, int p_230443_2_, int p_230443_3_){
+				TooltipRendering.drawHoveringText(p_230443_1_, Component.translatable("ds.gui.dragon_editor.wings.tooltip"), p_230443_2_, p_230443_3_);
+			}
 		});
-		addRenderableWidget(new ExtendedCheckbox(width / 2 + 100, height - 38, 120, 17, 17, Component.translatable("ds.gui.dragon_editor.default_skin"), preset.skinAges.get(level).get().defaultSkin, p -> preset.skinAges.get(level).get().defaultSkin = p.selected()){
+		addRenderableWidget(new ExtendedCheckbox(width / 2 + 100, height - 25, 120, 17, 17, Component.translatable("ds.gui.dragon_editor.default_skin"), preset.skinAges.get(level).get().defaultSkin, p -> preset.skinAges.get(level).get().defaultSkin = p.selected()){
 			@Override
 			public void renderButton(PoseStack pMatrixStack, int pMouseX, int pMouseY, float pPartialTicks){
 				selected = preset.skinAges.get(level).get().defaultSkin;

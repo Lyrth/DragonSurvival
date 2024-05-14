@@ -133,7 +133,7 @@ public class SkinsScreen extends Screen{
 				handler.getSkinData().skinPreset.skinAges.get(level).get().defaultSkin = true;
 			}
 
-			FakeClientPlayerUtils.getFakePlayer(0, handler).animationSupplier = () -> "fly";
+			FakeClientPlayerUtils.getFakePlayer(0, handler).animationSupplier = () -> "fly_head_locked_magic";
 			stack.pushPose();
 			stack.translate(0, 0, 100);
 			ClientDragonRender.renderEntityInInventory(dragon, startX + 15, startY + 70, scale, xRot, yRot);

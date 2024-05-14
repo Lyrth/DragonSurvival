@@ -95,27 +95,14 @@ public class DragonModel extends AnimatedGeoModel<DragonEntity> {
 
 	/**TODO Body Types Update
 	Required:
-	- First for 1.19.2, then other versions as desired.
-	- Make a choice in the editor menu between 5 Body Types. The selection menu appears before editing the appearance. The menu itself looks like 3d models with random animations (like the ones to the left and right of the dragon species selection).
-	- The body types is ONLY a set of animations. Models and textures do not depend on the body type in any way. Custom Skins do not need to be redone.
-	- Remove the disappearance of wings on the model, if the start with wings is turned off in the configs. (startWithWings)
-	- Change the animations in the dragon editor to match the selected body type.
+	 - tips for body types like for magic abilities
 
 	 Extras:
-	 - Bring back the "disable wings" button in dragon editor for all body types except western (wyvern) types
-	 - Fix bug with T-pose appearing intermittently (especially in multiplayer). The easiest way to trigger is to use invisibility from the Forest Dragon Hunter skill.
-	 - customization.json - Ability to disallow some details in the editor for some Body Types (for example, wing details are not required for wingless).
+     - customization.json - Ability to disallow some details in the editor for some Body Types (for example, wing details are not required for wingless).
 	 - emotes.json - Ability to disallow some emotions for certain Body Types.
-	 - Additional argument for `/dragon cave 3 true centre Black_Aures` command or separate `/dragon centre` command.
-	 - Add `/dragon-body` command for body types gui.
-	 - A config that allows you to adjust modifier multipliers for the following Body Types: jump height, running speed, flying speed, flying turn speed, swimming speed, step height, damage, bonus amount of damage, bonus amount of xp, bonus amount of armour, bonus amount of mana. Ability to add negative values. Default parameters or from other configs are taken as the base value (1.0).
 	 - Change rider sit position height for each Body Types (or bind the rider more dynamically with code and complex rendering).
 	 - Change the height of the Breath Source for each Body Types (or make this dependent on the BreathSource position on the model)
-	 - Reduce the hitbox for northern body types
 	 - Lower the breathing/eyes height for the northern type
-	 - Ability to expand the number of Body Types.
-	 - Additional buttons to switch between body types in Skin Tab when explore other people skins.
-	 - Add a "Body types" button to the altar menu next to the "Dragon Editor" button
 	*/
 
 	/**

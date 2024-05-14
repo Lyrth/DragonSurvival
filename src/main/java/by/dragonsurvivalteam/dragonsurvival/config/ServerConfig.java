@@ -42,138 +42,130 @@ public class ServerConfig{
 	@ConfigOption( side = ConfigSide.SERVER, category = "general", key = "canMoveWhileCasting", comment = "If you should be able to move while casting certain skills or if player movement can be prevented." )
 	public static Boolean canMoveWhileCasting = false;
 
-	@ConfigRange( min = 0.0, max = 1000.0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "general", key = "maxSizeVari", comment = "The maximum size variation in percentage" )
-	public static Double maxSizeVari = 10.0;
-
-	@ConfigRange( min = -1000.0, max = 0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "general", key = "minSizeVari", comment = "The minimum size variation in percentage" )
-	public static Double minSizeVari = -10.0;
-
 	@ConfigOption( side = ConfigSide.SERVER, category = "general", key = "startWithDragonChoice", comment = "Should the dragon altar interface be opened when the player first joins the world?" )
 	public static Boolean startWithDragonChoice = true;
 
 	// Growth
 	@ConfigType(Block.class)
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "destructibleBlocks", comment = "Blocks that are destructible when block destruction is enabled. Blocks that can be harvested with an axe are also destroyable by default on whitelist mode. Formatting: block/modid:id" )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "big_dragon"}, key = "destructibleBlocks", comment = "Blocks that are destructible when block destruction is enabled. Blocks that can be harvested with an axe are also destroyable by default on whitelist mode. Formatting: block/modid:id" )
 	public static List<String> destructibleBlocks = List.of(
 			"minecraft:leaves"
 	);
 
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "useBlacklistForDestructibleBlocks", comment = "Use a blacklist for destructible blocks instead of a whitelist.")
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "big_dragon"}, key = "useBlacklistForDestructibleBlocks", comment = "Use a blacklist for destructible blocks instead of a whitelist.")
 	public static Boolean useBlacklistForDestructibleBlocks = false;
 
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "allowLargeBlockDestruction", comment = "Allow a dragon to instantly destroy certain colliding blocks if they are above a certain size.")
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "big_dragon"}, key = "allowLargeBlockDestruction", comment = "Allow a dragon to instantly destroy certain colliding blocks if they are above a certain size.")
 	public static Boolean allowLargeBlockDestruction = false;
 
 	@ConfigRange( min = 0.0, max = 1.0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "largeBlockDestructionRemovePercentage", comment = "The percentage of blocks removed instead of destroyed when a dragon instantly destroys blocks. If a block is removed, it doesn't make a sound or particle effect. This is to minimize lag from particle VFX and audio spam.")
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "big_dragon"}, key = "largeBlockDestructionRemovePercentage", comment = "The percentage of blocks removed instead of destroyed when a dragon instantly destroys blocks. If a block is removed, it doesn't make a sound or particle effect. This is to minimize lag from particle VFX and audio spam.")
 	public static Double largeBlockDestructionRemovePercentage = 0.96;
 
 	@ConfigRange( min = 14.0, max = 1000000.0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "largeBlockDestructionSize", comment = "The size threshold for a dragon to start instantly destroying blocks. Crouching prevents destruction from occurring.")
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "big_dragon"}, key = "largeBlockDestructionSize", comment = "The size threshold for a dragon to start instantly destroying blocks. Crouching prevents destruction from occurring.")
 	public static Double largeBlockDestructionSize = 120.0;
 
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "allowCrushing", comment = "Allow a dragon to crush entities beneath it after being above a certain size. Crouching prevents crushing from occurring.")
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "big_dragon"}, key = "allowCrushing", comment = "Allow a dragon to crush entities beneath it after being above a certain size. Crouching prevents crushing from occurring.")
 	public static Boolean allowCrushing = false;
 
 	@ConfigRange( min = 14.0, max = 1000000.0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "crushingSize", comment = "The size at which a dragon can begin to crush entities.")
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "big_dragon"}, key = "crushingSize", comment = "The size at which a dragon can begin to crush entities.")
 	public static Double crushingSize = 120.0;
 
 	@ConfigRange( min = 0.0, max = 20.0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "crushingDamageScalar", comment = "The amount damage dealt per dragon size when crushing entities.")
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "big_dragon"}, key = "crushingDamageScalar", comment = "The amount damage dealt per dragon size when crushing entities.")
 	public static Double crushingDamageScalar = 0.05;
 
 	@ConfigRange( min = 0, max = 20 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "crushingSize", comment = "The amount of ticks before entities can be crushed again after they were already crushed.")
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "big_dragon"}, key = "crushingSize", comment = "The amount of ticks before entities can be crushed again after they were already crushed.")
 	public static Integer crushingTickDelay = 20;
 
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "allowLargeScaling", comment = "Allow a dragon's max health, damage, reach, and step height to continue to scale with growth beyond its normal limits.")
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "big_dragon"}, key = "allowLargeScaling", comment = "Allow a dragon's max health, damage, reach, and step height to continue to scale with growth beyond its normal limits.")
 	public static Boolean allowLargeScaling = false;
 
 	@ConfigRange( min = 1, max = 1000 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "largeMaxHealth", comment = "The maximum health when the dragon is at maximum growth size if large scaling is enabled.")
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "big_dragon"}, key = "largeMaxHealth", comment = "The maximum health when the dragon is at maximum growth size if large scaling is enabled.")
 	public static Integer largeMaxHealth = 80;
 
 	@ConfigRange( min = 0.0, max = 100.0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "largeDamageBonus", comment = "The bonus damage when the dragon is at maximum growth size if large scaling is enabled.")
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "big_dragon"}, key = "largeDamageBonus", comment = "The bonus damage when the dragon is at maximum growth size if large scaling is enabled.")
 	public static Double largeDamageBonus = 6.0;
 
 	@ConfigRange( min = 0.0, max = 100.0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "largeReachScalar", comment = "The bonus reach given per 60 size once the dragon is above the default growth size of 60 if large scaling is enabled.")
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "big_dragon"}, key = "largeReachScalar", comment = "The bonus reach given per 60 size once the dragon is above the default growth size of 60 if large scaling is enabled.")
 	public static Double largeReachScalar = 0.5;
 
 	@ConfigRange( min = 0.0, max = 100.0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "largeStepHeightScalar", comment = "The bonus step height given per 60 size once the dragon is above the default growth size of 60 if large scaling is enabled.")
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "big_dragon"}, key = "largeStepHeightScalar", comment = "The bonus step height given per 60 size once the dragon is above the default growth size of 60 if large scaling is enabled.")
 	public static Double largeStepHeightScalar = 1.0;
 
 	@ConfigRange( min = 0.0, max = 10.0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "largeBlockBreakRadiusScalar", comment = "The bonus block break radius given per 60 size once the dragon is above the default growth size of 60 if large scaling is enabled. A block radius of 0 disables this feature. Crouching allows you to mine one block at a time.")
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "big_dragon"}, key = "largeBlockBreakRadiusScalar", comment = "The bonus block break radius given per 60 size once the dragon is above the default growth size of 60 if large scaling is enabled. A block radius of 0 disables this feature. Crouching allows you to mine one block at a time.")
 	public static Double largeBlockBreakRadiusScalar = 0.7;
 
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "sizeChangesHitbox", comment = "Whether the dragon size determines its hitbox size. The bigger the dragon, the bigger the hitbox. If false standard player's hitbox be used." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "standard_dragon"}, key = "sizeChangesHitbox", comment = "Whether the dragon size determines its hitbox size. The bigger the dragon, the bigger the hitbox. If false standard player's hitbox be used." )
 	public static Boolean sizeChangesHitbox = true;
 
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "largerDragonHitbox", comment = "Whether the dragon hitbox grows past a human hitbox." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "standard_dragon"}, key = "largerDragonHitbox", comment = "Whether the dragon hitbox grows past a human hitbox." )
 	public static Boolean hitboxGrowsPastHuman = true;
 
 	@ConfigType(Item.class)
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "growNewborn", comment = "List of items to grow newborn dragon. Format: item/modid:id" )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth"}, key = "growNewborn", comment = "List of items to grow newborn dragon. Format: item/modid:id" )
 	public static List<String> growNewborn = List.of("dragonsurvival:heart_element", "dragonsurvival:weak_dragon_heart", "dragonsurvival:elder_dragon_heart");
 
 	@ConfigType(Item.class)
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "growYoung", comment = "List of items to grow young dragon. Format: item/modid:id" )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth"}, key = "growYoung", comment = "List of items to grow young dragon. Format: item/modid:id" )
 	public static List<String> growYoung = List.of("dragonsurvival:weak_dragon_heart", "dragonsurvival:elder_dragon_heart");
 
 	@ConfigType(Item.class)
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "growAdult", comment = "List of items to grow adult dragon. Format: item/modid:id" )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth"}, key = "growAdult", comment = "List of items to grow adult dragon. Format: item/modid:id" )
 	public static List<String> growAdult = List.of("dragonsurvival:elder_dragon_heart");
 
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "alternateGrowing", comment = "Defines if dragon should grow without requirement of catalyst items. Your dragon will just grow over time." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth"}, key = "alternateGrowing", comment = "If true, dragons will grow without the use of catalyst grow items. Does not broker the use of items. Just an additional type of growth." )
 	public static Boolean alternateGrowing = true;
 
 	@ConfigRange( min = 14.0, max = 1000000.0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "maxGrowthSize", comment = "Defines the max size your dragon can grow to. Values that are too high can break your game. It is not advisable to set a number higher than 60." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth"}, key = "maxGrowthSize", comment = "Defines the max size your dragon can grow to. Values that are too high can break your game. It is not advisable to set a number higher than 60." )
 	public static Double maxGrowthSize = DEFAULT_MAX_GROWTH_SIZE;
 
 	@ConfigRange( min = 0, max = 1000000.0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "reachBonus", comment = "The bonus that is given to dragons at 60 size. The bonus gradually scales up to the maximum size. Human players have 1.0x reach and a size 60 dragon will have 1.5x distance with default values.")
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "standard_dragon"}, key = "reachBonus", comment = "The bonus that is given to dragons at 60 size. The bonus gradually scales up to the maximum size. Human players have 1.0x reach and a size 60 dragon will have 1.5x distance with default values.")
 	public static Double reachBonus = 0.5;
 	
 	@ConfigRange( min = 0, max = 1000000.0 )
-	@ConfigOption ( side = ConfigSide.SERVER, category = "growth", key = "attackRangeBonus", comment = "The bonus that is given to dragons at every 60 size. Human players have 1.0x reach and a size 60 dragon will have 1.5x distance with default value. Only applies to combat." )
+	@ConfigOption ( side = ConfigSide.SERVER, category = {"growth", "standard_dragon"}, key = "attackRangeBonus", comment = "The bonus that is given to dragons at every 60 size. Human players have 1.0x reach and a size 60 dragon will have 1.5x distance with default value. Only applies to combat." )
 	public static Double attackRangeBonus = 0.5;
 
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "saveGrowthStage", comment = "Should the growth stage of a dragon be saved even when you change. Does not affect the saving progress of magic (use saveAllAbilities). The author does not approve of weredragons, but if you insist..." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth"}, key = "saveGrowthStage", comment = "Should the growth stage of a dragon be saved even when you change. Does not affect the saving progress of magic (use saveAllAbilities). The author does not approve of weredragons, but if you insist..." )
 	public static Boolean saveGrowthStage = false;
 
 	@ConfigRange( min = 1, max = 100 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "minHealth", comment = "Dragon starting health. Minimum health dragons will start off with." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth"}, key = "minHealth", comment = "Dragon starting health. Minimum health dragons will start off with." )
 	public static Integer minHealth = 14;
 
 	@ConfigRange( min = 1, max = 100 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "maxHealth", comment = "The maximum health when the dragon is fully grown." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth"}, key = "maxHealth", comment = "The maximum health when the dragon is fully grown." )
 	public static Integer maxHealth = 40;
 
 	@ConfigRange( min = 1, max = 100 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "maxHealthSize", comment = "The size at which the maximum health is reached." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth"}, key = "maxHealthSize", comment = "The size at which the maximum health is reached." )
 	public static Integer maxHealthSize = 40;
 
 	@ConfigRange( min = 0.0, max = 1000 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "newbornGrowthModifier", comment = "A multiplier to change the growth rate from newborn to young. At 1.0 it takes about 3 hours to turn a newborn dragon into a young dragon." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "standard_dragon"}, key = "newbornGrowthModifier", comment = "A multiplier to change the growth rate from newborn to young. At 1.0 it takes about 3 hours to turn a newborn dragon into a young dragon." )
 	public static Double newbornGrowthModifier = 0.3;
 
 	@ConfigRange( min = 0.0, max = 1000 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "youngGrowthModifier", comment = "A multiplier to change the growth rate from young to adult. At 1.0 it takes about 1 day to turn a young dragon into a adult dragon." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "standard_dragon"}, key = "youngGrowthModifier", comment = "A multiplier to change the growth rate from young to adult. At 1.0 it takes about 1 day to turn a young dragon into a adult dragon." )
 	public static Double youngGrowthModifier = 0.5;
 
 	@ConfigRange( min = 0.0, max = 1000 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "adultGrowthModifier", comment = "A multiplier to change the growth rate from adult to a full sized adult. At 1.0 it takes about 3 days to become a dragon of maximum adult size." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "standard_dragon"}, key = "adultGrowthModifier", comment = "A multiplier to change the growth rate from adult to a full sized adult. At 1.0 it takes about 3 days to become a dragon of maximum adult size." )
 	public static Double adultGrowthModifier = 0.9;
 
 	@ConfigRange( min = 0.0, max = 1000 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "growth", key = "maxGrowthModifier", comment = "A multiplier to change the growth rate from full sized adult to max size. The change in growth after the maximum adult size is measured in months and years." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"growth", "standard_dragon"}, key = "maxGrowthModifier", comment = "A multiplier to change the growth rate from full sized adult to max size. The change in growth after the maximum adult size is measured in months and years." )
 	public static Double maxGrowthModifier = 1.0;
 
 	@ConfigRange( min = 0.0, max = 1.0 )
@@ -458,39 +450,39 @@ public class ServerConfig{
 
 	// Ore Loot
 	@ConfigRange( min = 0.0, max = 1.0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "ore", key = "humanOreDustChance", comment = "The odds of dust dropping when a human harvests an ore." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"drops", "ore"}, key = "humanOreDustChance", comment = "The odds of dust dropping when a human harvests an ore." )
 	public static Double humanOreDustChance = 0.1;
 
 	@ConfigRange( min = 0.0, max = 1.0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "ore", key = "dragonOreDustChance", comment = "The odds of dust dropping when a dragon harvests an ore." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"drops", "ore"}, key = "dragonOreDustChance", comment = "The odds of dust dropping when a dragon harvests an ore." )
 	public static Double dragonOreDustChance = 0.2;
 
 	@ConfigRange( min = 0.0, max = 1.0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "ore", key = "humanOreBoneChance", comment = "The odds of a bone dropping when a human harvests an ore." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"drops", "ore"}, key = "humanOreBoneChance", comment = "The odds of a bone dropping when a human harvests an ore." )
 	public static Double humanOreBoneChance = 0.0;
 
 	@ConfigRange( min = 0.0, max = 1.0 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "ore", key = "dragonOreBoneChance", comment = "The odds of a bone dropping when a dragon harvests an ore." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"drops", "ore"}, key = "dragonOreBoneChance", comment = "The odds of a bone dropping when a dragon harvests an ore." )
 	public static Double dragonOreBoneChance = 0.01;
 
 	@ConfigType(Block.class)
-	@ConfigOption( side = ConfigSide.SERVER, category = "ore", key = "oresTag", comment = "The tag that contains all ores that can drop dust/bones when harvested. Will not drop if the ore drops another of the items in this tag. Format: modid:id" )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"drops", "ore"}, key = "oresTag", comment = "The tag that contains all ores that can drop dust/bones when harvested. Will not drop if the ore drops another of the items in this tag. Format: modid:id" )
 	public static String oresTag = "forge:ores";
 
 	@ConfigType(Item.class)
-	@ConfigOption( side = ConfigSide.SERVER, category = "food", key = "hurtfulToCaveDragon", comment = "Items which will cause damage to cave dragons when consumed. Formatting: item/modid:itemid:damage" )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"food", "cave_dragon", "other"}, key = "hurtfulToCaveDragon", comment = "Items which will cause damage to cave dragons when consumed. Formatting: item/modid:itemid:damage" )
 	public static List<String> caveDragonHurtfulItems = Arrays.asList("minecraft:potion:2", "minecraft:water_bottle:2", "minecraft:milk_bucket:2");
 
 	@ConfigType(Item.class)
-	@ConfigOption( side = ConfigSide.SERVER, category = "food", key = "hurtfulToSeaDragon", comment = "Items which will cause damage to sea dragons when consumed. Formatting: item/modid:itemid:damage" )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"food", "sea_dragon", "other"}, key = "hurtfulToSeaDragon", comment = "Items which will cause damage to sea dragons when consumed. Formatting: item/modid:itemid:damage" )
 	public static List<String> seaDragonHurtfulItems = Collections.emptyList();
 
 	@ConfigType(Item.class)
-	@ConfigOption( side = ConfigSide.SERVER, category = "food", key = "hurtfulToForestDragon", comment = "Items which will cause damage to forest dragons when consumed. Formatting: item/modid:itemid:damage" )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"food", "forest_dragon", "other"}, key = "hurtfulToForestDragon", comment = "Items which will cause damage to forest dragons when consumed. Formatting: item/modid:itemid:damage" )
 	public static List<String> forestDragonHurtfulItems = Collections.emptyList();
 
 	@ConfigRange( min = 0, max = 10000 )
-	@ConfigOption( side = ConfigSide.SERVER, category = "food", key = "chargedSoupBuffDuration", comment = "How long in seconds should the cave fire effect from charged soup last. (Default to 5min) Set to 0 to disable." )
+	@ConfigOption( side = ConfigSide.SERVER, category = {"food", "cave_dragon", "other"}, key = "chargedSoupBuffDuration", comment = "How long in seconds should the cave fire effect from charged soup last. (Default to 5min) Set to 0 to disable." )
 	public static Integer chargedSoupBuffDuration = 300;
 
 

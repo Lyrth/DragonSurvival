@@ -94,9 +94,13 @@ public class DragonBonusHandler{
 
 				AbstractDragonBody body = dragonStateHandler.getBody();
 				if (body != null && body.getGravityMult() <= 1.0) {
-					distance /= body.getGravityMult();
+					if (body.getGravityMult() == 0) {
+						distance = 0;
+					} else {
+						distance *= body.getGravityMult() - 1;
+					}
 				} else if (body != null) {
-					distance /= ((body.getGravityMult() - 1) / 2) + 1;
+					distance *= ((body.getGravityMult() - 1) / 2) + 1;
 				}
 
 				livingFallEvent.setDistance(distance);

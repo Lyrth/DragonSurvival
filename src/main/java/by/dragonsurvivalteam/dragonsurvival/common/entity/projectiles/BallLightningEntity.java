@@ -51,6 +51,7 @@ public class BallLightningEntity extends DragonBallEntity{
 	@Override
 	protected ParticleOptions getTrailParticle(){
 		return ParticleTypes.WHITE_ASH;
+		//plz, add here DSParticles.LARGE_LIGHTNING for cool effects, I cannot :(
 	}
 
 	@Override

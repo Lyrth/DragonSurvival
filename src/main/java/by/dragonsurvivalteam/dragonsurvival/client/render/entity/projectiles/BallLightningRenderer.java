@@ -39,7 +39,6 @@ public class BallLightningRenderer extends GeoProjectilesRenderer<BallLightningE
 			stack.scale(2.0F, 2.0F, 2.0F);
 			stack.mulPose(entityRenderDispatcher.cameraOrientation());
 			stack.mulPose(Vector3f.YP.rotationDegrees(180.0F));
-			Minecraft.getInstance().getItemRenderer().renderStatic(new ItemStack(DSItems.lightningTextureItem), TransformType.GROUND, p_225623_6_, OverlayTexture.NO_OVERLAY, stack, p_225623_5_, 0);
 			stack.popPose();
 			super.render(p_225623_1_, p_225623_2_, p_225623_3_, stack, p_225623_5_, p_225623_6_);
 		}

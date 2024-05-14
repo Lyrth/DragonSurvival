@@ -497,6 +497,34 @@
           "texture": "dragonsurvival:textures/dragon/custom/cave_extra_wings_9.png"
         },
 		{
+          "key": "extra_fins_1",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_1.png"
+        },
+		{
+          "key": "extra_fins_2",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_2.png"
+        },
+		{
+          "key": "extra_fins_3",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_3.png"
+        },
+		{
+          "key": "extra_fins_4",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_4.png"
+        },
+		{
+          "key": "extra_fins_5",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_5.png"
+        },
+		{
+          "key": "extra_fins_6",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_6.png"
+        },
+		{
+          "key": "extra_fins_7",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_7.png"
+        },
+		{
           "key": "extra_horns_1",
           "texture": "dragonsurvival:textures/dragon/custom/extra_horns_1.png"
         },
@@ -1443,6 +1471,34 @@
 		{
           "key": "sea_extra_wings_14",
           "texture": "dragonsurvival:textures/dragon/custom/sea_extra_wings_14.png"
+        },
+		{
+          "key": "extra_fins_1",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_1.png"
+        },
+		{
+          "key": "extra_fins_2",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_2.png"
+        },
+		{
+          "key": "extra_fins_3",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_3.png"
+        },
+		{
+          "key": "extra_fins_4",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_4.png"
+        },
+		{
+          "key": "extra_fins_5",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_5.png"
+        },
+		{
+          "key": "extra_fins_6",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_6.png"
+        },
+		{
+          "key": "extra_fins_7",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_7.png"
         },
 		{
           "key": "extra_horns_1",
@@ -2414,6 +2470,34 @@
 		{
           "key": "forest_extra_wings_10",
           "texture": "dragonsurvival:textures/dragon/custom/forest_extra_wings_10.png"
+        },
+		{
+          "key": "extra_fins_1",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_1.png"
+        },
+		{
+          "key": "extra_fins_2",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_2.png"
+        },
+		{
+          "key": "extra_fins_3",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_3.png"
+        },
+		{
+          "key": "extra_fins_4",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_4.png"
+        },
+		{
+          "key": "extra_fins_5",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_5.png"
+        },
+		{
+          "key": "extra_fins_6",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_6.png"
+        },
+		{
+          "key": "extra_fins_7",
+          "texture": "dragonsurvival:textures/dragon/custom/extra_fins_7.png"
         },
 		{
           "key": "extra_horns_1",
