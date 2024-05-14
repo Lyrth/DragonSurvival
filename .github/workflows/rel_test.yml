@@ -17,6 +17,7 @@ jobs:
         id: semantic
         with:
           extra_plugins: "semantic-release @semantic-release/exec conventional-changelog-conventionalcommits"
+          branches: ${{ github.head_ref || github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
