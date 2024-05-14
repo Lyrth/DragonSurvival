@@ -1,0 +1,76 @@
+name: Automatic GH release (testing)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v3
+        id: semantic
+        with:
+          extra_plugins: "semantic-release @semantic-release/exec conventional-changelog-conventionalcommits"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get java version
+        id: java_version
+        uses: christian-draeger/read-properties@1.0.1
+        with:
+          path: './gradle.properties'
+          property: 'java_version'
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: ${{ steps.java_version.outputs.value }}
+          distribution: 'temurin'
+          cache: 'gradle'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Setup forge mdk
+        run: ./gradlew init
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Publish local maven
+        run: ./gradlew publish
+
+      - name: Generate changelog value
+        shell: bash
+        id: release_description
+        run: |
+          description="${{ steps.semantic.outputs.new_release_notes }}"
+          description="${description//'%'/'\n'}"
+          description="${description//$'\n'/'\n'}"
+          description="${description//$'\r'/'\n'}"
+          echo $description
+          echo "::set-output name=description::$description"
+
+      - name: Get minecraft version
+        id: mc_version
+        uses: christian-draeger/read-properties@1.0.1
+        with:
+          path: './gradle.properties'
+          property: 'mc_version'
+
+      - name: GitHub publish release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Version ${{ steps.semantic.outputs.new_release_version }} for ${{ steps.mc_version.outputs.value }}
+          body: |
+            ⚠️ This is an automatically generated file with untested content. Be extremely careful not to use this in your main world without creating backups! ⚠️
+
+            Changes:
+            ```${{ steps.release_description.outputs.description }}```
+          files: build/libs/*${{ steps.semantic.outputs.new_release_version }}.jar
