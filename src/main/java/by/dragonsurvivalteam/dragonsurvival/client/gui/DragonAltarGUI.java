@@ -21,12 +21,19 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.components.Widget;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
+import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.client.gui.widget.ExtendedButton;
+
+import static com.mojang.blaze3d.platform.GlConst.GL_ALWAYS;
+import static com.mojang.blaze3d.platform.GlConst.GL_LEQUAL;
 
 public class DragonAltarGUI extends Screen{
 	public static final ResourceLocation CONFIRM_BUTTON = new ResourceLocation(DragonSurvivalMod.MODID, "textures/gui/confirm_button.png");
@@ -41,6 +48,10 @@ public class DragonAltarGUI extends Screen{
 	private int animation1 = 1;
 	private int animation2 = 0;
 	private int tick;
+
+	static double xrot = 0;
+	static double yrot = 0;
+	static double zrot = 0;
 
 	public DragonAltarGUI(){
 		super(Component.translatable("ds.gui.dragon_altar"));
@@ -125,7 +136,7 @@ public class DragonAltarGUI extends Screen{
 		RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
 //		RenderSystem.setShaderTexture(0, GuiComponent.BACKGROUND_LOCATION);
 		RenderSystem.enableDepthTest();
-		RenderSystem.depthFunc(519);
+		RenderSystem.depthFunc(GL_ALWAYS);
 		bufferbuilder.begin(Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
 		bufferbuilder.vertex(x0, y0, zLevel).uv(0.0F, (float)y0 / 32.0F).color(64, 64, 64, 55).endVertex();
 		bufferbuilder.vertex(x0 + width, y0, zLevel).uv((float)width / 32.0F, (float)y0 / 32.0F).color(64, 64, 64, 255).endVertex();
@@ -137,7 +148,7 @@ public class DragonAltarGUI extends Screen{
 		bufferbuilder.vertex(x0, y1, zLevel).uv(0.0F, (float)y1 / 32.0F).color(64, 64, 64, 255).endVertex();
 		tesselator.end();
 
-		RenderSystem.depthFunc(515);
+		RenderSystem.depthFunc(GL_LEQUAL);
 		RenderSystem.disableDepthTest();
 		RenderSystem.enableBlend();
 		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE);
@@ -163,7 +174,7 @@ public class DragonAltarGUI extends Screen{
 		matrixStack.scale(scale, scale, scale);
 		matrixStack.translate(0, 0, 400);
 		ClientDragonRender.dragonModel.setCurrentTexture(null);
-		ClientDragonRender.renderEntityInInventory(DragonUtils.isDragon(player) ? dragon : player, x, y, scale, xrot, -3);
+		ClientDragonRender.renderEntityInInventory(DragonUtils.isDragon(player) ? dragon : player, x, y, scale, xrot, -3, 0, 0);
 		matrixStack.popPose();
 	}
 

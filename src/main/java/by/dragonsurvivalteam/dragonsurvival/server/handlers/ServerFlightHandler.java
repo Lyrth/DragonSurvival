@@ -334,20 +334,10 @@ public class ServerFlightHandler{
 		return hasFood && player.isSprinting() && isFlying(player);
 	}
 
-	public static double getLandTime(final Player player, double goalTime, final Vec3 deltaMovement) {
-		if (isFlying(player)) {
-			BlockPos blockHeight = player.level.getHeightmapPos(Types.MOTION_BLOCKING, player.blockPosition());
-			int height = blockHeight.getY();
-			double aboveGround = Math.max(0, player.position().y - height);
-			double timeToGround = aboveGround / Math.abs(deltaMovement.y);
-
-			if (player.fallDistance > 5 && deltaMovement.y < 0) {
-				if (aboveGround < 20 && timeToGround <= goalTime) {
-					return timeToGround;
-				}
-			}
-		}
-
-		return -1;
+	public static double distanceFromGround(Player player){
+		BlockPos blockHeight = player.level.getHeightmapPos(Types.MOTION_BLOCKING, player.blockPosition());
+		int height = blockHeight.getY();
+		double aboveGround = Math.max(0, player.position().y - height);
+		return aboveGround;
 	}
 }

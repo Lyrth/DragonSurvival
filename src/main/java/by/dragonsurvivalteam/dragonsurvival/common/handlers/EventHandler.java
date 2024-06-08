@@ -11,6 +11,7 @@ import by.dragonsurvivalteam.dragonsurvival.network.status.PlayerJumpSync;
 import by.dragonsurvivalteam.dragonsurvival.registry.DSBlocks;
 import by.dragonsurvivalteam.dragonsurvival.registry.DSItems;
 import by.dragonsurvivalteam.dragonsurvival.registry.DragonEffects;
+import by.dragonsurvivalteam.dragonsurvival.registry.DragonModifiers;
 import by.dragonsurvivalteam.dragonsurvival.util.DragonUtils;
 import by.dragonsurvivalteam.dragonsurvival.util.ResourceHelper;
 import net.minecraft.core.BlockPos;
@@ -381,13 +382,11 @@ public class EventHandler{
 			if(dragonStateHandler.isDragon()){
 				Double jumpBonus = 0.0;
 				if (dragonStateHandler.getBody() != null) {
-					jumpBonus = dragonStateHandler.getBody().getJumpBonus();
+					jumpBonus = DragonModifiers.getJumpBonus(dragonStateHandler);
 				}
-				switch(dragonStateHandler.getLevel()){
-					case NEWBORN -> living.push(0, ServerConfig.newbornJump + jumpBonus, 0); //1+ block
-					case YOUNG -> living.push(0, ServerConfig.youngJump + jumpBonus, 0); //1.5+ block
-					case ADULT -> living.push(0, ServerConfig.adultJump + jumpBonus, 0); //2+ blocks
-				}
+
+				living.push(0, jumpBonus, 0);
+
 				if(living instanceof ServerPlayer){
 					if(living.getServer().isSingleplayer()){
 						NetworkHandler.CHANNEL.send(PacketDistributor.ALL.noArg(), new PlayerJumpSync(living.getId(), 20)); // 42

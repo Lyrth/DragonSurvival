@@ -42,7 +42,7 @@ public class DragonBodies {
 	}
 
 	public static AbstractDragonBody newDragonBodyInstance(String name){
-		return bodyMappings.containsKey(name.toLowerCase()) ? bodyMappings.get(name.toLowerCase()).get() : null;
+		return bodyMappings.containsKey(name.toLowerCase()) ? bodyMappings.get(name.toLowerCase()).get() : bodyMappings.get("center").get();
 	}
 
 	public static List<String> getBodies() {

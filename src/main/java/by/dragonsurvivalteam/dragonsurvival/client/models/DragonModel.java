@@ -110,7 +110,7 @@ public class DragonModel extends AnimatedGeoModel<DragonEntity> {
 	 * @link <a href="https://github.com/bernie-g/geckolib/blob/4e864bd2d4a0a8dceea01f600b7031cb2fba3a3b/Forge/src/main/java/software/bernie/geckolib3/model/AnimatedGeoModel.java#L51">Github link</a>
 	 */
 	@Override
-	public void setCustomAnimations(final DragonEntity dragon, int uniqueID, final AnimationEvent customPredicate) {
+	public void setCustomAnimations(DragonEntity dragon, int uniqueID, final AnimationEvent customPredicate) {
 		AnimationData manager = dragon.getFactory().getOrCreateAnimationData(uniqueID);
 
 		if (manager.startTick == -1) {
@@ -122,6 +122,7 @@ public class DragonModel extends AnimatedGeoModel<DragonEntity> {
 			double gameTick = manager.tick;
 			double deltaTicks = gameTick - lastGameTickTime;
 			seekTime += deltaTicks;
+			dragon.seekTime = seekTime; // Needed for dynamic speed adjustments to work correctly
 			lastGameTickTime = gameTick;
 		}
 

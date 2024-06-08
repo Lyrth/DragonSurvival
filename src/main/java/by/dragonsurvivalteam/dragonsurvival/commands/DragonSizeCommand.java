@@ -3,7 +3,9 @@ package by.dragonsurvivalteam.dragonsurvival.commands;
 import by.dragonsurvivalteam.dragonsurvival.common.capability.DragonStateHandler;
 import by.dragonsurvivalteam.dragonsurvival.config.ServerConfig;
 import by.dragonsurvivalteam.dragonsurvival.network.NetworkHandler;
+import by.dragonsurvivalteam.dragonsurvival.network.RequestClientData;
 import by.dragonsurvivalteam.dragonsurvival.network.player.SyncSize;
+import by.dragonsurvivalteam.dragonsurvival.network.player.SynchronizeDragonCap;
 import by.dragonsurvivalteam.dragonsurvival.util.DragonLevel;
 import by.dragonsurvivalteam.dragonsurvival.util.DragonUtils;
 import com.mojang.brigadier.CommandDispatcher;
@@ -33,6 +35,7 @@ public class DragonSizeCommand {
             DragonStateHandler cap = DragonUtils.getHandler(serverPlayer);
             if(cap.isDragon()) {
                 cap.setSize(size, serverPlayer);
+
                 NetworkHandler.CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> serverPlayer), new SyncSize(serverPlayer.getId(), size));
             }
             return 1;

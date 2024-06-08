@@ -18,9 +18,6 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -30,7 +27,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -168,10 +164,8 @@ public class DragonStateHandler extends EntityStateHandler {
 		}
 
 		dragonBody = DragonBodies.newDragonBodyInstance(tag.getString("dragonBody"));
-		if (dragonBody != null) {
-			if (tag.contains("bodyData")) {
-				dragonBody.readNBT(tag.getCompound("bodyData"));
-			}
+		if (tag.contains("bodyData")) {
+			dragonBody.readNBT(tag.getCompound("bodyData"));
 		}
 
 		if (isDragon()) {

@@ -14,7 +14,7 @@ public class SouthBodyType extends AbstractDragonBody {
 
 	@ConfigRange(min = -10.0, max = 100)
 	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "south"}, key = "southStepBonus", comment = "The step bonus given to South-type dragons")
-	public static Double southStepBonus = 1.0;
+	public static Double southStepBonus = 0.0;
 
 	@ConfigRange(min = -10.0, max = 100)
 	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "south"}, key = "southDamageBonus", comment = "The damage bonus given to South-type dragons")

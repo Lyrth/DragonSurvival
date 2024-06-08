@@ -2,8 +2,6 @@ package by.dragonsurvivalteam.dragonsurvival.common.entity.projectiles;
 
 
 import by.dragonsurvivalteam.dragonsurvival.client.particles.SeaDragon.LargeLightningParticleData;
-import by.dragonsurvivalteam.dragonsurvival.client.particles.SeaDragon.SmallLightningParticleData;
-import by.dragonsurvivalteam.dragonsurvival.config.ServerConfig;
 import by.dragonsurvivalteam.dragonsurvival.magic.DragonAbilities;
 import by.dragonsurvivalteam.dragonsurvival.magic.abilities.SeaDragon.active.BallLightningAbility;
 import by.dragonsurvivalteam.dragonsurvival.magic.abilities.SeaDragon.active.StormBreathAbility;
@@ -13,9 +11,7 @@ import by.dragonsurvivalteam.dragonsurvival.registry.DragonEffects;
 import by.dragonsurvivalteam.dragonsurvival.util.Functions;
 import by.dragonsurvivalteam.dragonsurvival.util.ResourceHelper;
 import by.dragonsurvivalteam.dragonsurvival.util.TargetingFunctions;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -26,20 +22,17 @@ import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Fireball;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import software.bernie.geckolib3.core.builder.ILoopType;
-
 import javax.annotation.Nullable;
 import java.util.List;
 
 public class BallLightningEntity extends DragonBallEntity{
 	protected boolean isLingering = false;
 	protected int lingerTicks = 100;
+	protected LargeLightningParticleData trail = new LargeLightningParticleData(37, false);
 	public BallLightningEntity(Level p_i50168_9_, LivingEntity p_i50168_2_, double p_i50168_3_, double p_i50168_5_, double p_i50168_7_){
 		super(DSEntities.BALL_LIGHTNING, p_i50168_2_, p_i50168_3_, p_i50168_5_, p_i50168_7_, p_i50168_9_);
 	}
@@ -50,8 +43,7 @@ public class BallLightningEntity extends DragonBallEntity{
 
 	@Override
 	protected ParticleOptions getTrailParticle(){
-		return ParticleTypes.WHITE_ASH;
-		//plz, add here DSParticles.LARGE_LIGHTNING for cool effects, I cannot :(
+		return trail;
 	}
 
 	@Override
@@ -72,18 +64,18 @@ public class BallLightningEntity extends DragonBallEntity{
 
 	@Override
 	protected void onHit(HitResult hitResult){
-		if(this.level.isClientSide || (getOwner() == null || !getOwner().isRemoved()) && this.level.hasChunkAt(this.blockPosition())) {
-			if (!(getOwner() instanceof Player))
-			{
+		if((getOwner() == null || !getOwner().isRemoved()) && this.level.hasChunkAt(this.blockPosition())) {
+			if(this.level.isClientSide && !isLingering) {
 				level.playLocalSound(getX(), getY(), getZ(), SoundEvents.LIGHTNING_BOLT_IMPACT, SoundSource.HOSTILE, 3.0F, 0.5f, false);
+				isLingering = true;
+			} else if (!isLingering) {
+				isLingering = true;
+				// These power variables drive the movement of the entity in the parent tick() function, so we need to zero them out as well.
+				xPower = 0;
+				zPower = 0;
+				yPower = 0;
+				setDeltaMovement(Vec3.ZERO);
 			}
-
-			isLingering = true;
-			// These power variables drive the movement of the entity in the parent tick() function, so we need to zero them out as well.
-			xPower = 0;
-			zPower = 0;
-			yPower = 0;
-			setDeltaMovement(Vec3.ZERO);
 		}
 	}
 	

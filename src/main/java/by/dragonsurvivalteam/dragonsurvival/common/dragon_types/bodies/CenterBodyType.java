@@ -14,7 +14,7 @@ public class CenterBodyType extends AbstractDragonBody {
 
 	@ConfigRange(min = -10.0, max = 100)
 	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerStepBonus", comment = "The step bonus given to Center-type dragons")
-	public static Double centerStepBonus = 1.0;
+	public static Double centerStepBonus = 0.0;
 
 	@ConfigRange(min = -10.0, max = 100)
 	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "center"}, key = "centerDamageBonus", comment = "The damage bonus given to Center-type dragons")

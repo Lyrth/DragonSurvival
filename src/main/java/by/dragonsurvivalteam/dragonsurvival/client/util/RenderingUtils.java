@@ -321,4 +321,17 @@ public class RenderingUtils{
 		builder.addAnimation(animationName, loopType);
 		controller.transitionLengthTicks = transitionLength;
 	}
+
+	public static <E extends IAnimatable> void setAnimationSpeed(double speed, double currentAnimationTick, AnimationController<E> controller) {
+
+		if(speed == controller.animationSpeed) {
+			return;
+		}
+
+		if(controller.getCurrentAnimation() != null) {
+			double distance = currentAnimationTick - controller.tickOffset;
+			controller.tickOffset = currentAnimationTick - distance * (controller.animationSpeed / speed);
+			controller.animationSpeed = speed;
+		}
+	}
 }

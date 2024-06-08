@@ -8,6 +8,7 @@ import net.minecraft.client.gui.components.Widget;
 import net.minecraft.client.gui.components.events.AbstractContainerEventHandler;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.util.Mth;
 import software.bernie.geckolib3.core.processor.IBone;
 
@@ -17,7 +18,7 @@ import java.util.function.Supplier;
 public class DragonUIRenderComponent extends AbstractContainerEventHandler implements Widget{
 	private final Screen screen;
 	private final Supplier<DragonEntity> getter;
-	public float yRot = -3, xRot = -5;
+	public float yRot = 0, xRot = 0;
 	public float xOffset = 0, yOffset = 0;
 	public float zoom = 0;
 	public int x, y, width, height;
@@ -62,12 +63,12 @@ public class DragonUIRenderComponent extends AbstractContainerEventHandler imple
 	}
 
 	@Override
-	public boolean mouseDragged(double x1, double y1, int p_231045_5_, double x2, double y2){
+	public boolean mouseDragged(double x1, double y1, int rightClick, double x2, double y2){
 		if(isMouseOver(x1, y1)){
-			if(p_231045_5_ == 0){
+			if(rightClick == 0){
 				xRot -= x2 / 5;
 				yRot -= y2 / 5;
-			}else if(p_231045_5_ == 1){
+			}else if(rightClick == 1){
 				xOffset -= x2 / 5;
 				yOffset -= y2 / 5;
 

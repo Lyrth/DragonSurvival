@@ -16,7 +16,6 @@
     "MixinPlayerEnd",
     "MixinServerPlayerGameMode",
     "MixinSleepStatus",
-    "MixinLevelRenderer",
     "tool_swap.MixinServerPlayerGameModeStart",
     "tool_swap.MixinServerPlayerGameModeEnd"
   ],

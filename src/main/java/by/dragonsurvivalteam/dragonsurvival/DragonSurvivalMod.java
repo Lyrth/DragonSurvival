@@ -112,10 +112,10 @@ public class DragonSurvivalMod{
 	public void addPackFinders(AddPackFindersEvent event) {
 		if (event.getPackType() == PackType.CLIENT_RESOURCES) {
 			HashMap<MutableComponent, String> resourcePacks = new HashMap<MutableComponent, String>();
-			resourcePacks.put(Component.literal("- Dragon East"), "ds_east");
-			resourcePacks.put(Component.literal("- Dragon North"), "ds_north");
-			resourcePacks.put(Component.literal("- Dragon South"), "ds_south");
-			resourcePacks.put(Component.literal("- Dragon West"), "ds_west");
+			//resourcePacks.put(Component.literal("- Dragon East"), "ds_east");
+			//resourcePacks.put(Component.literal("- Dragon North"), "ds_north");
+			//resourcePacks.put(Component.literal("- Dragon South"), "ds_south");
+			//resourcePacks.put(Component.literal("- Dragon West"), "ds_west");
 			resourcePacks.put(Component.literal("- Old Magic Icons for DS"), "ds_old_magic");
 			resourcePacks.put(Component.literal("- Dark GUI for DS"), "ds_dark_gui");
 			for (Map.Entry<MutableComponent, String> entry : resourcePacks.entrySet()) {

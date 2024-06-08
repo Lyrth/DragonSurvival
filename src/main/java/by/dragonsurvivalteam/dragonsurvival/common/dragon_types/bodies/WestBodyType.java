@@ -22,7 +22,7 @@ public class WestBodyType extends AbstractDragonBody {
 
 	@ConfigRange(min = 0.0, max = 100)
 	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "west"}, key = "westDamageMult", comment = "The damage multiplier given to West-type dragons")
-	public static Double westDamageMult = 0.8;
+	public static Double westDamageMult = 1.0;
 
 	@ConfigRange(min = -10.0, max = 100)
 	@ConfigOption(side = ConfigSide.SERVER, category = {"bonuses", "body", "west"}, key = "westArmorBonus", comment = "The armor bonus given to West-type dragons")

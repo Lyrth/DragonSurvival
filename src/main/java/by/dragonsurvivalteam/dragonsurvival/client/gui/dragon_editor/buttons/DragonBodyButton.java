@@ -1,5 +1,6 @@
 package by.dragonsurvivalteam.dragonsurvival.client.gui.dragon_editor.buttons;
 
+import by.dragonsurvivalteam.dragonsurvival.client.util.TooltipRendering;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -39,6 +40,12 @@ public class DragonBodyButton extends Button {
 	public void press() {
 		dragonEditorScreen.dragonBody = dragonBody;
 		dragonEditorScreen.update();
+	}
+
+	@Override
+	public void renderToolTip(PoseStack p_230443_1_, int p_230443_2_, int p_230443_3_){
+		TooltipRendering.drawHoveringText(p_230443_1_, Component.translatable("ds.gui.body_types." + dragonBody.getBodyName().toLowerCase() + ".tooltip"), p_230443_2_, p_230443_3_);
+		//TODO Add the same tooltip as for magic skills (similar to achievements) instead of the current one. Basic description on the main section, additional characteristics are revealed on ctrl (like Claws skill or any active skills). The main body type is centered. Changes in the positive side of other types should be highlighted in green color, and in the negative red. The localization is already in the file.
 	}
 
 	@Override

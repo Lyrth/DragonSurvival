@@ -61,6 +61,18 @@ public class DragonSizeHandler{
 			event.setNewSize(calculateDimensions(width, height));
 		}
 	}
+	
+	public static double getDragonHeight(Player player) {
+		DragonStateHandler handler = DragonUtils.getHandler(player);
+		double height = calculateDragonHeight(handler.getSize(), ServerConfig.hitboxGrowsPastHuman);
+		boolean squish = false;
+		if (handler.getBody() != null) {
+			height *= handler.getBody().getHeightMult();
+			squish = handler.getBody().isSquish();
+		}
+		Pose overridePose = overridePose(player);
+		return calculateModifiedHeight(height, overridePose, true, squish);
+	}
 
 	public static double calculateDragonHeight(double size, boolean growsPastHuman){
 		double height = (size + 4.0D) / 20.0D; // 0.9 -> Config Dragon Max

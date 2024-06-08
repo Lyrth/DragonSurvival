@@ -206,7 +206,7 @@ public class ClientProxy {
                                 ClientCastingHandler.hasCast = true;
                                 ClientCastingHandler.status = ClientCastingHandler.StatusStop;
                             }
-                        }, message.castStartTime);
+                        }, message.castStartTime, message.clientTime);
                     } else {
                         ability.onKeyReleased(player);
                     }

@@ -73,21 +73,13 @@ public class MagicHandler{
 		AttributeInstance moveSpeed = player.getAttribute(Attributes.MOVEMENT_SPEED);
 
 		DragonStateProvider.getCap(player).ifPresent(cap -> {
-			if(!cap.isDragon() || cap.getLevel() != DragonLevel.ADULT){
-				if(moveSpeed.getModifier(DRAGON_PASSIVE_MOVEMENT_SPEED) != null){
-					moveSpeed.removeModifier(DRAGON_PASSIVE_MOVEMENT_SPEED);
-				}
+
+			// TODO: Remove this code after a while once the patch has been in for a bit. For now this is here to prevent any issues with save files that have the old data.
+			if(moveSpeed.getModifier(DRAGON_PASSIVE_MOVEMENT_SPEED) != null){
+				moveSpeed.removeModifier(DRAGON_PASSIVE_MOVEMENT_SPEED);
 			}
+
 			if(cap.isDragon()) {
-				if(cap.getLevel() == DragonLevel.ADULT){
-					AttributeModifier move_speed = new AttributeModifier(DRAGON_PASSIVE_MOVEMENT_SPEED, "DRAGON_MOVE_SPEED", 0.2F, AttributeModifier.Operation.MULTIPLY_TOTAL);
-	
-					if(moveSpeed.getModifier(DRAGON_PASSIVE_MOVEMENT_SPEED) == null){
-						moveSpeed.addTransientModifier(move_speed);
-					}
-				}
-	
-	
 				if(cap.getMagicData().abilities.isEmpty() || cap.getMagicData().innateDragonAbilities.isEmpty() || cap.getMagicData().activeDragonAbilities.isEmpty()){
 					cap.getMagicData().initAbilities(cap.getType());
 				}

@@ -371,10 +371,9 @@ public class DragonScreen extends EffectRenderingInventoryScreen<DragonContainer
 		pPoseStack.pushPose();
 
 		RenderSystem.enableScissor((int)((leftPos + 26) * Minecraft.getInstance().getWindow().getGuiScale()), (int)(height * Minecraft.getInstance().getWindow().getGuiScale() - (topPos + 79) * Minecraft.getInstance().getWindow().getGuiScale()), (int)(76 * Minecraft.getInstance().getWindow().getGuiScale()), (int)(70 * Minecraft.getInstance().getWindow().getGuiScale()));
-		int sizeOffset = (int)(handler.getSize() - handler.getLevel().size) / 2;
-		float sizef = Math.min(30 - sizeOffset, 30);
-		pPoseStack.translate(0f, sizef / 10f, 0);
-		InventoryScreen.renderEntityInInventory(leftPos + 65, topPos + 65, (int)sizef, (float)(leftPos + 51 - pMouseX), (float)(topPos + 75 - 50 - pMouseY), minecraft.player);
+		double renderedSize = Math.min(handler.getSize(), ServerConfig.DEFAULT_MAX_GROWTH_SIZE) / 6;
+		pPoseStack.translate(0, 10., 0);
+		InventoryScreen.renderEntityInInventory(leftPos + 65, topPos + 65 + (int)(renderedSize * 1.25), (int)renderedSize + 15, (float)(leftPos + 51 - pMouseX), (float)(topPos + 75 - 50 - pMouseY), minecraft.player);
 		RenderSystem.disableScissor();
 
 		pPoseStack.popPose();

@@ -314,7 +314,7 @@ public class DragonEditorScreen extends Screen implements TooltipRender{
 		handler.getSkinData().skinPreset = preset;
 		handler.getSkinData().compileSkin();
 
-		dragonRender.zoom = (float) (level.size * preset.sizeMul);
+		dragonRender.zoom = (float) (level.size * preset.sizeMul * 4 - 5);
 
 		handler.setHasFlight(true);
 		handler.setType(dragonType);
@@ -790,8 +790,6 @@ public class DragonEditorScreen extends Screen implements TooltipRender{
 		addRenderableWidget(new ExtendedCheckbox(guiLeft - 15, 11, 40, 18, 18, Component.translatable("ds.gui.dragon_editor.show_ui"), showUi, p -> showUi = p.selected()));
 		addRenderableWidget(new BackgroundColorButton(guiLeft - 45, 11, 18, 18, Component.empty(), s -> {}, this));
 		addRenderableWidget(new HelpButton(dragonType, guiLeft - 75, 11, 15, 15, "ds.help.customization", 1));
-		//addRenderableWidget(new ScreenshotButton(guiLeft + 240, 10, 18, 18, Component.empty(), (s) -> {}, this));
-
 	}
 
 	public void update(){
@@ -893,4 +891,3 @@ public class DragonEditorScreen extends Screen implements TooltipRender{
 }
 
 // TODO add a warning to the logs that any custom textures are incorrectly registered in customization.json or are not used.
-// TODO add dragon body types (western, eastern, southern). They will only be realized with a set of animations. The model, textures and other things will not be affected. Body selection should appear after the species selection. Email me on discord for details if you want to help add this (I can't do it on my own)

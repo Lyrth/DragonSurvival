@@ -154,7 +154,6 @@ public class DragonEffects{
 		@Override
 		public void applyEffectTick(LivingEntity living, int strength){
 			living.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(Bolas.SLOW_MOVEMENT);
-			living.getAttribute(ForgeMod.ENTITY_GRAVITY.get()).removeModifier(Bolas.DISABLE_JUMP);
 		}
 
 		@Override

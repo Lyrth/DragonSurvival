@@ -1394,11 +1394,7 @@
 		{
           "key": "sea_extra_tail_3",
           "texture": "dragonsurvival:textures/dragon/custom/sea_extra_tail_3.png"
-        },
-		{
-          "key": "sea_extra_tail_3",
-          "texture": "dragonsurvival:textures/dragon/custom/sea_extra_tail_3.png"
-        },          
+        },       
 		{
             "key": "bonus_eyes",
             "texture": "dragonsurvival:textures/dragon/custom/sea_more_eyes.png"
